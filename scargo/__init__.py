@@ -142,7 +142,8 @@ def docker_run(
 )
 def docker_exec(ctx: Context):
     """Attach to existing docker environment"""
-    scargo_docker_exec(ctx.args)
+    docker_opts = ctx.args if ctx.args else ["-it"]
+    scargo_docker_exec(docker_opts)
 
 
 cli.add_typer(docker, name="docker")
